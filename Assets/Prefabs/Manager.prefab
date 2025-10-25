@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7665359904097682884}
   - component: {fileID: 6269301576420251451}
   - component: {fileID: 2341462366753003443}
+  - component: {fileID: -2200894230785062999}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -84,3 +85,23 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &-2200894230785062999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930181703146384470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278611a2ad794fa44a88842d601a1847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GestureManager
+  handTracker: {fileID: 0}
+  fireballPrefab: {fileID: 0}
+  shieldPrefab: {fileID: 0}
+  handPosition: {fileID: 0}
+  fireballSpawnPoint: {fileID: 0}
+  fireballSpeed: 20
+  fireballCooldown: 0.75
+  shieldCooldown: 2
