@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278611a2ad794fa44a88842d601a1847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GestureManager
-  handTracker: {fileID: 0}
-  fireballPrefab: {fileID: 0}
-  shieldPrefab: {fileID: 0}
+  handTracker: {fileID: 9027935195216855245, guid: 92943386f17257243990e4c881d9c4e7, type: 3}
+  fireballPrefab: {fileID: 6425317330632436974, guid: c98062369be341a49a9bc7355abdc4c6, type: 3}
+  shieldPrefab: {fileID: 802012499295516387, guid: 10749f6835dc600418113cbdb54398b2, type: 3}
   handPosition: {fileID: 0}
   fireballSpawnPoint: {fileID: 0}
   fireballSpeed: 20
