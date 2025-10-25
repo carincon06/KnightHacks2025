@@ -8,16 +8,12 @@ public class dispararbolas : MonoBehaviour
     private Vector3 direction;
     public void SetDirection(Vector3 newDirection)
     {
-        direction = newDirection.normalized; // Ensure it's a unit vector
+        direction = newDirection.normalized;
+        Destroy(gameObject, time);
+        // Ensure it's a unit vector
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        SetDirection(mano.forward);
-
-        Destroy(gameObject, time);
-    }
 
     // Update is called once per frame
     void Update()
