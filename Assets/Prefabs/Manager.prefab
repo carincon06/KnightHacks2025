@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7665359904097682884}
   - component: {fileID: 6269301576420251451}
-  - component: {fileID: 2341462366753003443}
   - component: {fileID: -2200894230785062999}
   m_Layer: 0
   m_Name: Manager
@@ -47,44 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UDPReceive
   port: 5052
-  startRecieving: 1
-  printToConsole: 0
   data: 
---- !u!114 &2341462366753003443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4930181703146384470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 338fe2759c598084299f45dbef70afcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HandTracking
-  udpReceive: {fileID: 6269301576420251451}
-  handPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &-2200894230785062999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,3 +67,5 @@ MonoBehaviour:
   fireballSpeed: 20
   fireballCooldown: 0.75
   shieldCooldown: 2
+  showDebugLogs: 1
+  showDebugGizmos: 1
