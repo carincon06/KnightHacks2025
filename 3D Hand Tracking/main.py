@@ -4,7 +4,7 @@ import socket
 
 # Parameters
 width, height = 1280, 720
-display_scale = 0.5  # (0.5 = 50% size, 0.3 = 30% size)
+display_scale = 0.3  # (0.5 = 50% size, 0.3 = 30% size)
 
 # Webcam
 cap = cv2.VideoCapture(0)

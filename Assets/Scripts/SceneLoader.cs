@@ -1,12 +1,17 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // 1. You MUST import this to use SceneManager
+using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    // 2. This is the public function the button will call
+    // Call this method to load a scene by name
     public void LoadScene(string sceneName)
     {
-        // 3. This line does the work
         SceneManager.LoadScene(sceneName);
+    }
+    
+    // Or load by build index
+    public void LoadSceneByIndex(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
     }
 }
