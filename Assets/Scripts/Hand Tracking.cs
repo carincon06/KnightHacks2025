@@ -6,7 +6,8 @@ public class HandTracking : MonoBehaviour
 {
     public UDPReceive udpReceive;
     public GameObject[] handPoints;
-
+    public float xOff;
+    public float yOff;
     void Start()
     {
         // Your Start code
@@ -53,8 +54,8 @@ public class HandTracking : MonoBehaviour
             float mirroredZ = centerZ - (z - centerZ); // or: 2 * centerZ - z
             
             handPoints[i].transform.localPosition = new Vector3(
-                12.8f - x,      // Mirror X axis (1280/100 = 12.8)
-                7.2f - y,       // Flip Y axis (720/100 = 7.2)
+                12.8f - x + xOff,      // Mirror X axis (1280/100 = 12.8)
+                7.2f - y + yOff,       // Flip Y axis (720/100 = 7.2)
                 mirroredZ       // Mirror Z to flip palm/back
             );
         }
