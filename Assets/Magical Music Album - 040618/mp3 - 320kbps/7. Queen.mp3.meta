@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 54e41d2f8754ff14ab9c80e2b96f8190
+timeCreated: 1525255340
+licenseType: Store
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 117907
+  packageName: Magical Music Album - 040618
+  packageVersion: 1.0
+  assetPath: Assets/Magical Music Album - 040618/mp3 - 320kbps/7. Queen.mp3
+  uploadId: 243522
