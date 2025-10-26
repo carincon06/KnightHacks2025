@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6215212178649409521}
   - component: {fileID: 2578055103891997587}
   - component: {fileID: 4477934668422470764}
+  - component: {fileID: -6180986590067797447}
   m_Layer: 0
   m_Name: Plasma Sphere (2)
-  m_TagString: Untagged
+  m_TagString: fireball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.4634, y: 4.2, z: -6.7999997}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 594917730747500432}
@@ -109,7 +110,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -157,6 +158,18 @@ MonoBehaviour:
   explosionEffectPrefab: {fileID: 577475194986792045, guid: 981cfd7322145ab48bc06a5be3392ae6, type: 3}
   lifetime: 5
   damageAmount: 10
+--- !u!114 &-6180986590067797447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6916111140770829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff21160fcac263448188c4aac11d2ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &397821637189534624
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +199,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8849579845308849108}

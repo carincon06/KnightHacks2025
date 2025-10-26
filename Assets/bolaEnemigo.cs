@@ -8,6 +8,7 @@ public class bolaEnemigo : MonoBehaviour
     public GameObject bola;
     public Transform shootPoint;
     public float shootDelay = 2f;
+    public float secondDelay = 1.0f;
     public void SetDirection(Vector3 newDirection)
     {
         direction = newDirection.normalized;
@@ -35,6 +36,7 @@ public class bolaEnemigo : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(secondDelay);
             Shoot();
             yield return new WaitForSeconds(shootDelay);
         }

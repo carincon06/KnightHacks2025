@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - fireballenemy
+  - shield
+  - fireball
+  - dragon
   layers:
   - Default
   - TransparentFX
