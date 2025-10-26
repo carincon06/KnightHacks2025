@@ -548,9 +548,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9027935195216855245, guid: 92943386f17257243990e4c881d9c4e7, type: 3}
+      propertyPath: depthScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027935195216855245, guid: 92943386f17257243990e4c881d9c4e7, type: 3}
       propertyPath: udpReceive
       value: 
       objectReference: {fileID: 305968713}
+    - target: {fileID: 9027935195216855245, guid: 92943386f17257243990e4c881d9c4e7, type: 3}
+      propertyPath: useDepthRotation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9070843069146202916, guid: 92943386f17257243990e4c881d9c4e7, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -579,11 +587,11 @@ PrefabInstance:
     - target: {fileID: -2200894230785062999, guid: 5fbbf66072bd7554fb015e413626935f, type: 3}
       propertyPath: shieldPrefab
       value: 
-      objectReference: {fileID: 802012499295516387, guid: 10749f6835dc600418113cbdb54398b2, type: 3}
+      objectReference: {fileID: 1957592409648599577, guid: 3ce62e84dab46f54a9c51523f8057ac0, type: 3}
     - target: {fileID: -2200894230785062999, guid: 5fbbf66072bd7554fb015e413626935f, type: 3}
       propertyPath: fireballPrefab
       value: 
-      objectReference: {fileID: 6425317330632436974, guid: c98062369be341a49a9bc7355abdc4c6, type: 3}
+      objectReference: {fileID: 6916111140770829, guid: e299c82e955f8cf4997f7573f2fd8672, type: 3}
     - target: {fileID: -2200894230785062999, guid: 5fbbf66072bd7554fb015e413626935f, type: 3}
       propertyPath: fireballSpawnPoint
       value: 

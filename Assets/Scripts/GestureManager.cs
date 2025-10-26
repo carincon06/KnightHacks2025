@@ -20,6 +20,7 @@ public class GestureManager : MonoBehaviour
     public float fireballSpeed = 20f;
     public float fireballCooldown = 0.75f;
     public float shieldCooldown = 2.0f;
+    public float shieldDistance = 0.5f; // Distance in front of hand
 
     [Header("Debug")]
     public bool showDebugLogs = true;
@@ -127,18 +128,54 @@ public class GestureManager : MonoBehaviour
             return;
         }
 
+        // --- NEW LOGIC ---
+        // We need to calculate the palm's "normal" vector (the direction it's facing).
+        // We get three points on the palm: wrist, index base, pinky base.
+        Vector3 palmBasePos = handTracker.handPoints[0].transform.position;
+        Vector3 indexKnucklePos = handTracker.handPoints[5].transform.position;
+        Vector3 pinkyKnucklePos = handTracker.handPoints[17].transform.position;
+
+        // Create two vectors that lie flat on the palm
+        Vector3 v1 = indexKnucklePos - palmBasePos; // Vector from wrist to index
+        Vector3 v2 = pinkyKnucklePos - palmBasePos; // Vector from wrist to pinky
+
+        // The Cross Product gives us a vector perpendicular to v1 and v2.
+        // This is our new "handDirection" (the palm normal).
+        Vector3 handDirection = Vector3.Cross(v2, v1).normalized;
+        
+        // ---
+        // *** IMPORTANT ***
+        // Because your HandTracking.cs mirrors the coordinates, the cross product
+        // might point *into* your palm instead of *out*.
+        //
+        // If the shield still appears behind your hand, UNCOMMENT the line below:
+        // handDirection = -handDirection;
+        // ---
+
+        if (handDirection.magnitude < 0.1f)
+        {
+            // Fallback if the hand is clenched or points are aligned
+            handDirection = Camera.main.transform.forward;
+        }
+
+        // --- BETTER POSITIONING ---
+        // Position the shield in front of the *center* of the palm (middle knuckle),
+        // not the wrist (handPosition). This will feel more natural.
+        Vector3 palmCenterPos = handTracker.handPoints[9].transform.position; // Middle base knuckle
+        Vector3 shieldPosition = palmCenterPos + handDirection * shieldDistance;
+
         // If we don't have a shield, spawn one.
         if (activeShield == null)
         {
-            // Spawn the shield at the hand's position
-            activeShield = Instantiate(shieldPrefab, handPosition.position, Quaternion.identity);
+            activeShield = Instantiate(shieldPrefab, shieldPosition, Quaternion.LookRotation(handDirection));
             if (showDebugLogs)
                 Debug.Log("Shield spawned!");
         }
         else
         {
-            // If we already have a shield, just update its position
-            activeShield.transform.position = handPosition.position;
+            // If we already have a shield, update its position and rotation
+            activeShield.transform.position = shieldPosition;
+            activeShield.transform.rotation = Quaternion.LookRotation(handDirection);
         }
     }
 
@@ -163,19 +200,19 @@ public class GestureManager : MonoBehaviour
         // 3. We can fire! Reset cooldown
         timeToFire = Time.time + fireballCooldown;
 
-        // 4. CRITICAL FIX: Check if spawn points are assigned
+        // 4. Check if spawn points are assigned
         if (fireballSpawnPoint == null || handPosition == null)
         {
             Debug.LogError("Fireball spawn points not assigned in Inspector!");
             return;
         }
 
-        // 5. Calculate the "forward" direction of the hand
+        // 5. Calculate the "forward" direction of the hand (SAME AS RED DEBUG LINE)
         Vector3 palmBasePos = handTracker.handPoints[0].transform.position;
-        Vector3 middleFingerPos = fireballSpawnPoint.position;
-        Vector3 fireDirection = (middleFingerPos - palmBasePos).normalized;
+        Vector3 middleFingerTip = handTracker.handPoints[12].transform.position; // Middle fingertip
+        Vector3 fireDirection = (middleFingerTip - palmBasePos).normalized;
 
-        // CRITICAL FIX: If direction is too small (hand flat), use camera forward
+        // If direction is too small (hand flat), use camera forward
         if (fireDirection.magnitude < 0.1f)
         {
             fireDirection = Camera.main.transform.forward;
@@ -185,23 +222,23 @@ public class GestureManager : MonoBehaviour
         if (showDebugLogs)
         {
             Debug.Log($"Firing fireball! Direction: {fireDirection}");
-            Debug.Log($"Spawn pos: {middleFingerPos}, Speed: {fireballSpeed}");
+            Debug.Log($"Spawn pos: {fireballSpawnPoint.position}, Speed: {fireballSpeed}");
         }
         
-        // 6. Spawn the fireball SLIGHTLY IN FRONT of the hand to avoid immediate collision
-        Vector3 spawnPos = middleFingerPos + fireDirection * 0.3f;
+        // 6. Spawn the fireball at the middle knuckle (fireballSpawnPoint)
+        Vector3 spawnPos = fireballSpawnPoint.position + fireDirection * 0.3f;
         GameObject fireball = Instantiate(fireballPrefab, 
                                   spawnPos, 
                                   Quaternion.LookRotation(fireDirection));
 
-        // 7. CRITICAL FIX: Make sure Rigidbody exists and add velocity
+        // 7. Make sure Rigidbody exists and add velocity
         Rigidbody rb = fireball.GetComponent<Rigidbody>();
         if (rb != null)
         {
             // Disable gravity initially so it flies straight
             rb.useGravity = false;
             
-            // Use velocity instead of AddForce for more predictable behavior
+            // Use velocity for predictable behavior
             rb.linearVelocity = fireDirection * fireballSpeed;
             
             if (showDebugLogs)
@@ -221,12 +258,12 @@ public class GestureManager : MonoBehaviour
 
         if (handTracker.handPoints.Length > 12 && fireballSpawnPoint != null && handPosition != null)
         {
-            // Draw the fire direction line (red)
+            // Draw the fire direction line (red) - THIS IS THE ACTUAL SHOOT DIRECTION
             Vector3 palmBasePos = handTracker.handPoints[0].transform.position;
             Vector3 middleFingerTip = handTracker.handPoints[12].transform.position; // Middle fingertip
             Vector3 fireDirection = (middleFingerTip - palmBasePos).normalized;
             
-            // Red arrow showing shoot direction
+            // Red arrow showing shoot direction (from spawn point)
             Gizmos.color = Color.red;
             Gizmos.DrawLine(fireballSpawnPoint.position, fireballSpawnPoint.position + fireDirection * 2f);
             
@@ -234,13 +271,19 @@ public class GestureManager : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(fireballSpawnPoint.position, 0.1f);
             
-            // NEW: Cyan line from wrist to middle fingertip (reference line)
+            // Cyan line from wrist to middle fingertip (reference line)
             Gizmos.color = Color.cyan;
             Gizmos.DrawLine(palmBasePos, middleFingerTip);
             
             // Green sphere at middle fingertip
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(middleFingerTip, 0.08f);
+
+            // Magenta line showing shield position
+            Gizmos.color = Color.magenta;
+            Vector3 shieldPos = handPosition.position + fireDirection * shieldDistance;
+            Gizmos.DrawLine(handPosition.position, shieldPos);
+            Gizmos.DrawWireSphere(shieldPos, 0.15f);
         }
     }
 }
