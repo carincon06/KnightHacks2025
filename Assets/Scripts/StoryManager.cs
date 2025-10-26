@@ -88,6 +88,10 @@ public class StoryManager : MonoBehaviour
 
         Debug.Log("Story finished, loading game scene.");
         SceneManager.LoadScene(gameSceneName);
+
+        // At the end of RunStorySequence()
+        yield return new WaitForSeconds(finalPauseTime);
+        SceneManager.LoadScene(gameSceneName);
     }
 
     IEnumerator WaitForClick()

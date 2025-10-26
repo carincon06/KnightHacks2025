@@ -349,7 +349,7 @@ MonoBehaviour:
     hideImage: 1
   typeSpeed: 0.001
   finalPauseTime: 2
-  gameSceneName: StoryScene
+  gameSceneName: MeadowDemo
 --- !u!4 &642496365
 Transform:
   m_ObjectHideFlags: 0

@@ -12,14 +12,17 @@ EditorBuildSettings:
     path: Assets/Scenes/StoryScene.unity
     guid: 858876ac95842414aab3c0ab07857495
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MeadowDemo.unity
+    guid: f23e08cdebda68449bc157014463d4ee
+  - enabled: 1
+    path: Assets/Scenes/YouWinScreen.unity
+    guid: 550943d18672a4843880f0419c9ace55
   - enabled: 1
     path: Assets/Scenes/YouLoseScreen.unity
     guid: 1095f0325828e3944aa55772a66d0ac2
   - enabled: 1
-    path: Assets/Scenes/YouWinScreen.unity
-    guid: 550943d18672a4843880f0419c9ace55
+    path: Assets/Scenes/SampleScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
