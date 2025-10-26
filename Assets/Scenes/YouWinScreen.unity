@@ -257,6 +257,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!224 &328892509
 RectTransform:
   m_ObjectHideFlags: 0
@@ -279,12 +280,17 @@ RectTransform:
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!224 &328892509 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2181660443909006270, guid: 596b80b2b5f78ce4588c1a7be88251f5, type: 3}
   m_PrefabInstance: {fileID: 7108692902916408343}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -417,6 +423,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &581096644
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +537,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 581096644}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
