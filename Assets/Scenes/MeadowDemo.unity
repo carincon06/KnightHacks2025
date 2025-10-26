@@ -34013,7 +34013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   howmanyenemies: 7
-  nextScene: MainMenu
+  nextScene: youwinbro
 --- !u!4 &1306682874
 Transform:
   m_ObjectHideFlags: 0

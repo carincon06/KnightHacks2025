@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class health : MonoBehaviour
 {
-    private int healthLevel = 5;
+    private int healthLevel = 10;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
