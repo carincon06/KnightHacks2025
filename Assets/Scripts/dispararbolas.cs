@@ -4,7 +4,7 @@ public class dispararbolas : MonoBehaviour
 {
     public Transform mano;
     public int time;
-    public int force;
+    public float force;
     private Vector3 direction;
     public void SetDirection(Vector3 newDirection)
     {

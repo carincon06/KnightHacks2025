@@ -3,7 +3,7 @@ using System.Collections;
 public class bolaEnemigo : MonoBehaviour
 {    
     public int time;
-    public int force;
+    public float force;
     private Vector3 direction;
     public GameObject bola;
     public Transform shootPoint;

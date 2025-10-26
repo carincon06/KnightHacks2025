@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
     // Loads your main game scene
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync("SampleScene");
+        SceneManager.LoadScene("MeadowDemo");
     }
 
     // Goes back to the main menu
