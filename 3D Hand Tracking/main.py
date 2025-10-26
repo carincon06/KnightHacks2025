@@ -4,6 +4,7 @@ import socket
 
 # Parameters
 width, height = 1280, 720
+display_scale = 0.5  # (0.5 = 50% size, 0.3 = 30% size)
 
 # Webcam
 cap = cv2.VideoCapture(0)
@@ -44,8 +45,14 @@ while True:
         # Send data to Unity
         sock.sendto(str.encode(str(data)), serverAddressPort)
 
-    # Show the webcam feed
-    cv2.imshow("Hand Tracking - Talk to the Hand", img)
+    # --- NEW DISPLAY LOGIC ---
+    # Create a smaller image just for display
+    display_width = int(width * display_scale)
+    display_height = int(height * display_scale)
+    img_display = cv2.resize(img, (display_width, display_height))
+
+    # Show the *resized* webcam feed
+    cv2.imshow("Hand Tracking - Talk to the Hand", img_display)
     
     # Press 'q' to quit
     if cv2.waitKey(1) & 0xFF == ord('q'):
