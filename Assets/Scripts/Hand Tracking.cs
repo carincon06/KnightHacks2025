@@ -8,9 +8,26 @@ public class HandTracking : MonoBehaviour
     public GameObject[] handPoints;
     public float xOff;
     public float yOff;
+    
     void Start()
     {
-        // Your Start code
+        // Auto-create hand points if not assigned
+        if (handPoints == null || handPoints.Length != 21)
+        {
+            handPoints = new GameObject[21];
+            for (int i = 0; i < 21; i++)
+            {
+                handPoints[i] = new GameObject($"HandPoint_{i}");
+                handPoints[i].transform.parent = this.transform;
+                
+                // Optional: Add a small sphere to visualize points
+                GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                sphere.transform.parent = handPoints[i].transform;
+                sphere.transform.localScale = Vector3.one * 0.05f;
+                sphere.transform.localPosition = Vector3.zero;
+            }
+            Debug.Log("Hand points auto-generated!");
+        }
     }
 
     void Update()
@@ -44,6 +61,13 @@ public class HandTracking : MonoBehaviour
 
         for (int i = 0; i < 21; i++)
         {
+            // Safety check
+            if (handPoints[i] == null)
+            {
+                Debug.LogError($"HandPoint {i} is null!");
+                continue;
+            }
+
             // Parse raw coordinates
             float x = float.Parse(points[i * 3]) / 100;
             float y = float.Parse(points[i * 3 + 1]) / 100;

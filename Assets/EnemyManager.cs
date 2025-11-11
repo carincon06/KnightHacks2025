@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         // Count remaining enemies
-        if (GameObject.FindGameObjectsWithTag("dragon").Length == 0)
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             // All enemies are dead, load next scene
             SceneManager.LoadScene(nextScene);
